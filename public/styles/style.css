@@ -1,0 +1,319 @@
+
+/* ---------- Global Styles ---------- */
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --cream: #faf7f0;
+  --light-cream: #f3ecdf;
+  --warm-beige: #e5d8c3;
+  --sand: #c7b394;
+  --brown: #6b4f35;
+  --dark-brown: #352815;
+  --muted-brown: #796b5b;
+  --white: #fffdf9;
+  --border: #e7dccb;
+}
+
+body {
+  margin: 0;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background: var(--cream);
+  color: var(--dark-brown);
+}
+
+/* ---------- Homepage Hero ---------- */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 20px;
+  text-align: center;
+}
+
+.eyebrow {
+  color: var(--brown);
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+h1 {
+  max-width: 700px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: clamp(38px, 7vw, 68px);
+  line-height: 1.12;
+  margin: 18px 0;
+}
+
+h1 span {
+  color: #a78660;
+  font-style: italic;
+}
+
+.description {
+  max-width: 490px;
+  line-height: 1.8;
+  color: var(--muted-brown);
+}
+
+/* ---------- Search Form ---------- */
+
+.search-form {
+  display: flex;
+  width: min(100%, 560px);
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.search-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 15px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--white);
+  color: var(--dark-brown);
+  font-size: 15px;
+  outline: none;
+}
+
+.search-form input:focus {
+  border-color: var(--sand);
+  box-shadow: 0 0 0 3px rgba(167, 134, 96, 0.15);
+}
+
+.search-form input::placeholder {
+  color: #a09586;
+}
+
+.search-form button {
+  padding: 15px 20px;
+  border: none;
+  border-radius: 12px;
+  background: var(--brown);
+  color: var(--white);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.search-form button:hover {
+  background: var(--dark-brown);
+}
+
+/* ---------- Results Header ---------- */
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 6%;
+  border-bottom: 1px solid var(--border);
+  background: var(--cream);
+}
+
+.brand {
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  color: var(--dark-brown);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brand:hover {
+  color: var(--brown);
+}
+
+.results-header .search-form {
+  margin-top: 0;
+  max-width: 520px;
+}
+
+/* ---------- Results Page ---------- */
+
+.results-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+.results-page h1 {
+  font-size: clamp(30px, 5vw, 46px);
+  overflow-wrap: anywhere;
+}
+
+.result-count,
+.message {
+  color: var(--muted-brown);
+  line-height: 1.7;
+}
+
+/* ---------- Book Grid ---------- */
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--white);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(74, 53, 31, 0.09);
+}
+
+/* ---------- Book Covers ---------- */
+
+.book-cover,
+.cover-placeholder {
+  width: 100%;
+  height: 260px;
+  object-fit: contain;
+  background: var(--light-cream);
+}
+
+.cover-placeholder {
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  color: var(--muted-brown);
+  font-size: 14px;
+  text-align: center;
+}
+
+/* ---------- Book Information ---------- */
+
+.book-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 18px;
+}
+
+.book-info h2 {
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  line-height: 1.4;
+  color: var(--dark-brown);
+  margin: 0 0 10px;
+}
+
+.author,
+.year {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted-brown);
+}
+
+.author {
+  margin-bottom: 4px;
+}
+
+.year {
+  margin-top: 4px;
+}
+
+/* ---------- Links ---------- */
+
+.book-link,
+.back-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--brown);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.book-link {
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: 14px;
+}
+
+.back-link {
+  margin-top: 36px;
+}
+
+.book-link:hover,
+.back-link:hover {
+  color: var(--dark-brown);
+  text-decoration: underline;
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 800px) {
+  .book-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .results-header {
+    flex-wrap: wrap;
+  }
+
+  .results-header .search-form {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 520px) {
+  .search-form {
+    flex-direction: column;
+  }
+
+  .book-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .results-page {
+    padding: 32px 16px;
+  }
+
+  .results-header {
+    padding: 20px 16px;
+  }
+
+  .results-header .search-form {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .book-cover,
+  .cover-placeholder {
+    height: 280px;
+  }
+}
+.book-info h2 {
+  overflow-wrap: anywhere;
+}
+.book-link:focus-visible,
+.back-link:focus-visible,
+.brand:focus-visible,
+.pagination a:focus-visible {
+  outline: 2px solid #6b4f35;
+  outline-offset: 4px;
+  border-radius: 4px;
+}

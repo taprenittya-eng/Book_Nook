@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Results | Book Corner</title>
+  <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+  <header class="results-header">
+    <a class="brand" href="/">Book Corner</a>
+
+    <form action="/search" method="GET" class="search-form">
+      <input
+        type="search"
+        name="q"
+        value="<%= query %>"
+        placeholder="Search for another book..."
+        required
+      >
+      <button type="submit">Search</button>
+    </form>
+  </header>
+
+  <main class="results-page">
+    <p class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</p>
+    <h1>Books for "<%= query %>"</h1>
+
+    <% if (errorMessage) { %>
+      <p class="message"><%= errorMessage %></p>
+
+    <% } else if (books.length === 0) { %>
+      <p class="message">No books found. Try another title or author.</p>
+
+    <% } else { %>
+      <p class="result-count">Showing <%= books.length %> results</p>
+
+      <section class="book-grid">
+        <% books.forEach((book) => { %>
+          <article class="book-card">
+            <% if (book.cover_i) { %>
+              <img
+                class="book-cover"
+                src="https://covers.openlibrary.org/b/id/<%= book.cover_i %>-M.jpg"
+                alt="Cover of <%= book.title %>"
+                loading="lazy"
+              >
+            <% } else { %>
+              <div class="cover-placeholder">Cover unavailable</div>
+            <% } %>
+
+            <div class="book-info">
+              <h2><%= book.title %></h2>
+
+              <p class="author">
+                <%= book.author_name
+                  ? book.author_name.join(", ")
+                  : "Author unknown" %>
+              </p>
+
+              <p class="year">
+                First published:
+                <%= book.first_publish_year || "Year unknown" %>
+              </p>
+
+              <a
+                class="book-link"
+                href="https://openlibrary.org<%= book.key %>"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Explore book →
+              </a>
+            </div>
+          </article>
+        <% }); %>
+      </section>
+    <% } %>
+
+    <a class="back-link" href="/">← Back to home</a>
+  </main>
+</body>
+</html>
